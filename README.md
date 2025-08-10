@@ -1,4 +1,5 @@
 ❤️ Heart Disease Prediction & Monitoring Web Application
+
 📌 Overview
 This is an integrated web application for real-time heart health monitoring and heart disease risk prediction.
 The platform combines live heartbeat sensing from connected hardware with AI-powered disease prediction, health guidance, preventive tips, and chatbot assistance — all in one easy-to-use interface.
@@ -12,19 +13,25 @@ Users can:
 - Access educational content and awareness resources.
 
 🚀 Features
+
 ❤️ Live Heartbeat Monitoring – Reads data directly from connected hardware (Arduino-based heart rate sensor) and displays it in real time.
+
 🩺 Disease Prediction – AI-powered model analyzes user inputs to predict heart disease risk.
+
 📋 Prevention Tips – Displays lifestyle and medical advice to lower health risks.
+
 🤖 AI Chatbot – Instant responses to heart-health-related queries.
+
 🔐 User Authentication – Secure signup/login system for personalized use.
+
 🎵 Media Integration – Background videos and audio for engagement.
 
 🛠️ Tech Stack
-Frontend: HTML5, CSS3, JavaScript
-Backend: Python (Flask Framework)
-Machine Learning: scikit-learn model (serialized with pickle)
-Hardware: Arduino with pulse sensor & OLED display
-Other: Flask-CORS for cross-origin requests
+- Frontend: HTML5, CSS3, JavaScript
+- Backend: Python (Flask Framework)
+- Machine Learning: scikit-learn model (serialized with pickle)
+- Hardware: Arduino with pulse sensor & OLED display
+- Other: Flask-CORS for cross-origin requests
 
 📂 Project Structure
 ```
