@@ -27,6 +27,7 @@ Hardware: Arduino with pulse sensor & OLED display
 Other: Flask-CORS for cross-origin requests
 
 📂 Project Structure
+```
 ├── app.py                       # Flask backend server
 ├── model.pk1                    # Serialized ML prediction model
 ├── index.html                    # Home page
@@ -45,6 +46,7 @@ Other: Flask-CORS for cross-origin requests
 │       └── (PNG/JPG image files)
 └── Heartbeat/
     └── Heartbeat.ino             # Arduino sketch for live heartbeat sensing
+```
 
 ⚙️ Installation & Setup
 
