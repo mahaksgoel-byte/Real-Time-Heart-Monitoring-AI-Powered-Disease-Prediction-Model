@@ -85,4 +85,4 @@ Improved AI chatbot with more medical datasets.
 📜 License
 This project is licensed under the Apache License.
 
-🔗 GitHub Repository: 
+🔗 GitHub Repository: https://github.com/mahaksgoel-byte/Real-Time-Heart-Monitoring-AI-Powered-Disease-Prediction-Model
