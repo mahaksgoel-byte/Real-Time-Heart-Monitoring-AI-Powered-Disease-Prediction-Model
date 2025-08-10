@@ -28,22 +28,38 @@ Other: Flask-CORS for cross-origin requests
 
 📂 Project Structure
 ├── app.py                     # Flask backend server
+
 ├── model.pk1                  # Serialized ML prediction model
+
 ├── index.html                  # Home page
+
 ├── prediction.html             # Heart disease prediction interface
+
 ├── results.html                # Prediction results page
+
 ├── chatbot.html                # AI chatbot interface
+
 ├── prevention.html             # Preventive tips and awareness
+
 ├── script.js                   # Frontend JS (live heartbeat, UI logic)
+
 ├── style.css                   # Styling
+
 ├── assets/
+
 │   ├── videos/
+
 │   │   └── heart-bg.mp4        # Background video
+
 │   ├── audio/
+
 │   │   └── heartbeat.mp3       # Audio effect
+
 │   └── images/
+
 │       └── (add any PNG/JPGs here)
-└── Heartbeat/
+
+└── Heartbeat/ 
     └── Heartbeat.ino           # Arduino sketch for live heartbeat sensing
 
 ⚙️ Installation & Setup
