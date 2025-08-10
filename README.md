@@ -35,24 +35,43 @@ Users can:
 
 📂 Project Structure
 ```
+Heart-Monitor-Prediction
+│
 ├── app.py                       # Flask backend server
-├── model.pk1                    # Serialized ML prediction model
+├── generate_model.py             # Script to train & save ML model
+├── serial_to_websocket.py        # Arduino-to-WebSocket integration
+├── hardware-integration.js       # JavaScript for hardware communication
+│
+├── model.pkl                     # Serialized ML prediction model
+├── requirements.txt              # Python dependencies
+├── tailwind.config.js            # Tailwind CSS configuration
+│
 ├── index.html                    # Home page
-├── prediction.html               # Heart disease prediction interface
-├── results.html                  # Prediction results page
-├── chatbot.html                  # AI chatbot interface
-├── prevention.html               # Preventive tips and awareness
-├── script.js                     # Frontend JavaScript (live heartbeat, UI logic)
+├── login.html                    # User login page
+├── signup.html                   # User registration page
+├── prediction.html                # Heart disease prediction form
+├── results.html                   # Prediction results page
+├── chatbot.html                   # AI chatbot interface
+├── checkins.html                  # User health check-ins
+├── preventions.html               # Preventive tips page
+│
+├── script.js                     # Frontend JS logic
 ├── style.css                     # Styling
-├── assets/
-│   ├── videos/
-│   │   └── heart-bg.mp4          # Background video
-│   ├── audio/
-│   │   └── heartbeat.mp3         # Audio effect
-│   └── images/
-│       └── (PNG/JPG image files)
-└── Heartbeat/
-    └── Heartbeat.ino             # Arduino sketch for live heartbeat sensing
+│
+📂 assets
+│   📂 audio
+│   │   └── heartbeat.mp3         # Heartbeat sound effect
+│   📂 Data
+│   │   └── cardio_cleaned_optimized.csv  # Cleaned dataset
+│   📂 heartbeat
+│   │   └── Heartbeat.ino         # Arduino sketch for live heartbeat sensing
+│   📂 images
+│   │   ├── Screenshot 2025-06-10 at ...
+│   │   ├── Screenshot 2025-06-10 at ...
+│   │   └── Screenshot 2025-06-10 at ...
+│   📂 videos
+│       └── heart-bg.mp4          # Background video
+
 ```
 
 ⚙️ Installation & Setup
