@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HeartCare - Your Heart, Our Mission</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body class="bg-gray-50">
+  <!-- Sidebar -->
+  <div class="sidebar fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-red-600 to-red-400 text-white shadow-lg transform transition-transform duration-300 sidebar-hidden lg:sidebar-visible z-40" id="sidebar">
+    <div class="p-4 flex justify-between items-center">
+      <h2 class="text-2xl font-bold flex items-center">
+        <i class="fa-solid fa-heart-pulse mr-2 heart-beat"></i> HeartCare
+      </h2>
+      <button id="closeSidebar" class="text-white hover:text-gray-200">
+        <i class="fa-solid fa-chevron-left text-xl sidebar-arrow transition-transform duration-300"></i>
+      </button>
+    </div>
+    <ul class="mt-6 space-y-2 px-4">
+      <li><a href="index.html" class="sidebar-link flex items-center p-2 bg-white bg-opacity-20 rounded-lg"><i class="fa-solid fa-house mr-2"></i> Home</a></li>
+      <li><a href="checkins.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-calendar-check mr-2"></i> Daily Check-ins</a></li>
+      <li><a href="prediction.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-heartbeat mr-2"></i> Prediction</a></li>
+      <li><a href="results.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-chart-line mr-2"></i> Results</a></li>
+      <li><a href="preventions.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-shield-heart mr-2"></i> Preventions</a></li>
+      <li><a href="chatbot.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-comment-medical mr-2"></i> Chatbot</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content lg:ml-64 p-4 transition-all duration-300" id="mainContent">
+    <!-- Header -->
+    <header class="bg-white text-red-600 p-4 flex justify-between items-center rounded-lg shadow-md sticky top-0 z-30">
+      <button id="toggleSidebar" class="text-2xl"><i class="fa-solid fa-bars"></i></button>
+      <h1 class="text-xl font-bold flex items-center"><i class="fa-solid fa-heart-pulse mr-2"></i> HeartCare</h1>
+      <button id="userProfile" class="text-2xl"><i class="fa-solid fa-user-circle"></i></button>
+    </header>
+
+    <!-- User Info Dropdown -->
+    <div id="userInfoDropdown" class="hidden absolute top-16 right-4 bg-white text-gray-800 rounded-lg shadow-lg p-4 w-64 z-50">
+      <h3 class="text-lg font-bold mb-2">User Profile</h3>
+      <p id="userNameDisplay" class="text-sm mb-1">Username: N/A</p>
+      <p id="userEmailDisplay" class="text-sm mb-4">Email: N/A</p>
+      <button id="logoutButton" class="bg-red-600 text-white px-4 py-1 rounded-lg hover:bg-red-700 w-full">Logout</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-red-600 to-red-400 text-white py-12 px-6 mt-4 rounded-lg shadow-lg text-center overflow-hidden">
+      <div class="absolute inset-0 heart-pulse-bg opacity-30"></div>
+      <h2 class="text-4xl font-bold mb-4 animate-pulse">Your Heart, Our Mission</h2>
+      <p class="text-lg mb-6 max-w-2xl mx-auto">Discover AI-powered tools to monitor, predict, and prevent cardiovascular disease with HeartCare.</p>
+      <a href="prediction.html" class="bg-white text-red-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">Take Control Now <i class="fa-solid fa-arrow-right ml-2"></i></a>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section class="container mx-auto mt-12">
+      <h2 class="text-3xl font-semibold text-red-600 mb-6 flex items-center">
+        <i class="fa-solid fa-chart-bar mr-2"></i> Your Heart Health at a Glance
+      </h2>
+      <div class="bg-white p-8 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="text-center">
+          <i class="fa-solid fa-heartbeat text-red-600 text-4xl mb-2"></i>
+          <p class="text-2xl font-bold heart-counter" data-count="72">0</p>
+          <p class="text-gray-700">Heart Rate (BPM)</p>
+        </div>
+        <div class="text-center">
+          <i class="fa-solid fa-tachometer-alt text-red-600 text-4xl mb-2"></i>
+          <p class="text-2xl font-bold heart-counter" data-count="120/80">0/0</p>
+          <p class="text-gray-700">Blood Pressure</p>
+        </div>
+        <div class="text-center">
+          <i class="fa-solid fa-exclamation-triangle text-red-600 text-4xl mb-2"></i>
+          <p class="text-2xl font-bold heart-counter" data-count="15">0%</p>
+          <p class="text-gray-700">CVD Risk</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Heart Health Quiz -->
+    <section class="container mx-auto mt-12">
+      <div class="relative bg-gradient-to-r from-red-500 to-red-400 text-white p-8 rounded-lg shadow-lg tilt-card">
+        <h3 class="text-2xl font-bold mb-4">Test Your Heart Knowledge!</h3>
+        <p class="mb-6">Take our 5-question quiz to learn about your heart health and get personalized insights.</p>
+        <a href="prediction.html" class="bg-white text-red-600 px-6 py-2 rounded-full hover:bg-gray-100 transition">Start Quiz <i class="fa-solid fa-question-circle ml-2"></i></a>
+      </div>
+    </section>
+
+    <!-- Daily Heart Tip -->
+    <section class="container mx-auto mt-12">
+      <h2 class="text-3xl font-semibold text-red-600 mb-6 flex items-center">
+        <i class="fa-solid fa-lightbulb mr-2"></i> Daily Heart Tip
+      </h2>
+      <div class="bg-white p-8 rounded-lg shadow-md flex items-center justify-between">
+        <p id="dailyTip" class="text-gray-700 text-lg flex-1">Take a 10-minute walk after dinner to boost circulation!</p>
+        <button id="refreshTip" class="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition">
+          <i class="fa-solid fa-sync-alt"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- Community Impact -->
+    <section class="container mx-auto mt-12">
+      <h2 class="text-3xl font-semibold text-red-600 mb-6 flex items-center">
+        <i class="fa-solid fa-users mr-2"></i> Our Impact
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-md text-center tilt-card">
+          <p class="text-3xl font-bold text-red-600 heart-counter" data-count="10000">0</p>
+          <p class="text-gray-700">Users Empowered</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center tilt-card">
+          <p class="text-3xl font-bold text-red-600 heart-counter" data-count="15">0%</p>
+          <p class="text-gray-700">Average Risk Reduction</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md text-center tilt-card">
+          <p class="text-3xl font-bold text-red-600 heart-counter" data-count="5000">0</p>
+          <p class="text-gray-700">Daily Check-ins</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- News Carousel -->
+    <section class="container mx-auto mt-12">
+      <h2 class="text-3xl font-semibold text-red-600 mb-6 flex items-center">
+        <i class="fa-solid fa-newspaper mr-2"></i> Heart Health News
+      </h2>
+      <div class="relative overflow-hidden">
+        <div id="newsCarousel" class="flex transition-transform duration-500">
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Exercise Boosts Heart Health 🏃‍♂️</h3>
+            <p class="text-gray-700 mb-4">A 2025 study confirms 150 minutes of weekly exercise cuts heart disease risk by 20%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Wearable Tech Advances ⌚</h3>
+            <p class="text-gray-700 mb-4">New devices detect heart irregularities with 95% accuracy, aiding early intervention.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Diet and Heart Health 🥗</h3>
+            <p class="text-gray-700 mb-4">Plant-based diets linked to 25% lower heart disease risk in 2025 trials.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Stress Reduction Helps Heart 🧘‍♀️</h3>
+            <p class="text-gray-700 mb-4">Mindfulness practices reduce heart disease risk by 15%, says 2025 research.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Sleep Improves Heart Health 😴</h3>
+            <p class="text-gray-700 mb-4">7-8 hours of sleep nightly lowers heart attack risk by 10%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Omega-3 Benefits Heart ❤️</h3>
+            <p class="text-gray-700 mb-4">Fish oil supplements reduce triglyceride levels by 20% in 2025 studies.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Hydration and Heart 💧</h3>
+            <p class="text-gray-700 mb-4">Drinking 8 glasses of water daily supports healthy blood pressure.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Yoga for Heart Health 🧘‍♂️</h3>
+            <p class="text-gray-700 mb-4">Yoga reduces stress hormones, lowering heart disease risk by 12%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Nuts for Heart Health 🥜</h3>
+            <p class="text-gray-700 mb-4">A daily handful of nuts cuts heart disease risk by 18%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Walking Benefits Heart 🚶‍♀️</h3>
+            <p class="text-gray-700 mb-4">30 minutes of brisk walking daily improves heart function.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Cholesterol Management 🩺</h3>
+            <p class="text-gray-700 mb-4">Statins reduce LDL cholesterol by 30% in high-risk patients.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Smoking Cessation 🚭</h3>
+            <p class="text-gray-700 mb-4">Quitting smoking halves heart attack risk within one year.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Weight Loss and Heart ⚖️</h3>
+            <p class="text-gray-700 mb-4">Losing 5% of body weight improves heart health significantly.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Meditation Benefits 🧘</h3>
+            <p class="text-gray-700 mb-4">Daily meditation lowers blood pressure by 5-10 mmHg.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Fiber for Heart Health 🌾</h3>
+            <p class="text-gray-700 mb-4">High-fiber diets reduce heart disease risk by 15%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Alcohol Moderation 🍷</h3>
+            <p class="text-gray-700 mb-4">Limiting alcohol to one drink daily supports heart health.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Strength Training 💪</h3>
+            <p class="text-gray-700 mb-4">Resistance exercises improve heart function by 10%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Dark Chocolate Benefits 🍫</h3>
+            <p class="text-gray-700 mb-4">Moderate dark chocolate consumption lowers heart risk by 8%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Social Connections 🤝</h3>
+            <p class="text-gray-700 mb-4">Strong social ties reduce heart disease risk by 12%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Green Tea Benefits 🍵</h3>
+            <p class="text-gray-700 mb-4">Drinking green tea daily lowers cholesterol by 5%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Blood Pressure Monitoring 📈</h3>
+            <p class="text-gray-700 mb-4">Regular BP checks prevent heart complications in 80% of cases.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Vitamin D and Heart ☀️</h3>
+            <p class="text-gray-700 mb-4">Adequate vitamin D levels reduce heart risk by 10%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Cycling for Heart 🚴‍♀️</h3>
+            <p class="text-gray-700 mb-4">Cycling 20 miles weekly cuts heart disease risk by 15%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Laughter and Heart 😂</h3>
+            <p class="text-gray-700 mb-4">Laughter reduces stress, lowering heart risk by 10%.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+          <div class="min-w-full p-6 bg-white rounded-lg shadow-md">
+            <h3 class="text-xl font-bold text-red-600 mb-2">Pet Ownership 🐶</h3>
+            <p class="text-gray-700 mb-4">Owning a pet lowers heart disease risk by 8% due to reduced stress.</p>
+            <a href="https://www.heart.org/en/news" class="text-red-600 hover:underline">Read More</a>
+          </div>
+        </div>
+        <button id="prevNews" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-red-600 text-white p-2 rounded-full hover:bg-red-700">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button id="nextNews" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-red-600 text-white p-2 rounded-full hover:bg-red-700">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-red-600 text-white p-8 mt-12">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-xl font-bold mb-4">HeartCare</h3>
+          <p class="text-sm">Empowering you to live a heart-healthy life with AI-driven insights.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-twitter text-2xl"></i></a>
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-facebook text-2xl"></i></a>
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-instagram text-2xl"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+          <div class="flex">
+            <input type="email" placeholder="Enter your email" class="p-2 rounded-l-lg flex-1 text-gray-800">
+            <button type="submit" class="bg-white text-red-600 p-2 rounded-r-lg hover:bg-gray-100">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <p class="text-center mt-6 text-sm">© 2025 HeartCare. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

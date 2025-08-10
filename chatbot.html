@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot - HeartCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 font-poppins">
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded shadow-lg hidden transform translate-y-4 transition-transform duration-300 z-50">
+    <span id="toastMessage"></span>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-red-600 to-red-400 text-white shadow-lg transform transition-transform duration-300 sidebar-hidden lg:sidebar-visible z-40" id="sidebar">
+    <div class="p-4 flex justify-between items-center">
+      <h2 class="text-2xl font-bold flex items-center">
+        <i class="fa-solid fa-heart-pulse mr-2 heart-beat"></i> HeartCare
+      </h2>
+      <button id="closeSidebar" class="text-white hover:text-gray-200">
+        <i class="fa-solid fa-chevron-left text-xl sidebar-arrow transition-transform duration-300"></i>
+      </button>
+    </div>
+    <ul class="mt-6 space-y-2 px-4">
+      <li><a href="index.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-house mr-2"></i> Home</a></li>
+      <li><a href="checkins.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-calendar-check mr-2"></i> Daily Check-ins</a></li>
+      <li><a href="prediction.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-heartbeat mr-2"></i> Prediction</a></li>
+      <li><a href="results.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-chart-line mr-2"></i> Results</a></li>
+      <li><a href="preventions.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-shield-heart mr-2"></i> Preventions</a></li>
+      <li><a href="chatbot.html" class="sidebar-link flex items-center p-2 bg-white bg-opacity-20 rounded-lg"><i class="fa-solid fa-comment-medical mr-2"></i> Chatbot</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content lg:ml-64 p-4 transition-all duration-300" id="mainContent">
+    <!-- Header -->
+    <header class="bg-white text-red-600 p-4 flex justify-between items-center rounded-lg shadow-md sticky top-0 z-30">
+      <button id="toggleSidebar" class="text-2xl lg:hidden"><i class="fa-solid fa-bars"></i></button>
+      <h1 class="text-xl font-bold flex-1 text-center flex items-center justify-center">
+        <i class="fa-solid fa-comment-medical mr-2"></i> HeartCare Chatbot
+      </h1>
+      <button id="userProfile" class="text-2xl"><i class="fa-solid fa-user-circle"></i></button>
+    </header>
+
+    <!-- User Info Dropdown -->
+    <div id="userInfoDropdown" class="hidden absolute top-16 right-4 bg-white text-gray-800 rounded-lg shadow-lg p-4 w-64 z-50">
+      <h3 class="text-lg font-bold mb-2">User Profile</h3>
+      <p id="userNameDisplay" class="text-sm mb-1">Username: N/A</p>
+      <p id="userEmailDisplay" class="text-sm mb-4">Email: N/A</p>
+      <button id="logoutButton" class="bg-red-600 text-white px-4 py-1 rounded-lg hover:bg-red-700 w-full">Logout</button>
+    </div>
+
+    <!-- Chatbot Interface -->
+    <section class="container mx-auto mt-6">
+      <div class="bg-white p-8 rounded-lg shadow-md fade-in">
+        <h2 class="text-3xl font-semibold text-red-600 mb-4 flex items-center">
+          <i class="fa-solid fa-comment-medical mr-2"></i> Talk to HeartBot
+        </h2>
+        <div class="flex justify-center mb-4">
+          <svg id="bot-icon" class="w-12 h-12 text-red-600 heart-beat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3c3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            <path d="M12 8v4m0 0v4m0-4h4m-4 0H8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="text-gray-700 mb-6 text-center">Ask HeartBot about your heart health using voice or text. Click the microphone to use your laptop’s microphone!</p>
+        <div id="chatWindow" class="bg-gray-100 p-4 rounded-lg h-96 overflow-y-auto mb-6 border border-gray-200">
+          <div id="chatMessages" class="space-y-2"></div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <input type="text" id="chatInput" class="flex-1 p-2 border border-gray-300 rounded-lg focus:border-red-600 focus:outline-none" placeholder="Type your question or click the microphone...">
+          <button id="sendMessage" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"><i class="fa-solid fa-paper-plane"></i></button>
+          <button id="startListening" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"><i class="fa-solid fa-microphone"></i></button>
+        </div>
+        <a href="preventions.html" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition inline-flex items-center mt-6">
+          <i class="fa-solid fa-shield-heart mr-2"></i> View Prevention Strategies
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-red-600 text-white p-8 mt-12">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-xl font-bold mb-4">HeartCare</h3>
+          <p class="text-sm">Empowering you to live a heart-healthy life with AI-driven insights.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-twitter text-2xl"></i></a>
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-facebook text-2xl"></i></a>
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-instagram text-2xl"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+          <div class="flex">
+            <input type="email" id="newsletterEmail" placeholder="Enter your email" class="p-2 rounded-l-lg flex-1 text-gray-800">
+            <button id="newsletterSubscribe" class="bg-white text-red-600 p-2 rounded-r-lg hover:bg-gray-100">Subscribe</button>
+          </div>
+          <p id="newsletterError" class="text-white text-sm mt-2 hidden">Please enter a valid email address.</p>
+        </div>
+      </div>
+      <p class="text-center mt-6 text-sm">© 2025 HeartCare. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

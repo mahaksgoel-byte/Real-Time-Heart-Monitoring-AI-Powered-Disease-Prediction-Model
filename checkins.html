@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Check-ins - HeartCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50">
+  <!-- Sidebar -->
+  <div class="sidebar fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-red-600 to-red-400 text-white shadow-lg transform transition-transform duration-300 sidebar-hidden lg:sidebar-visible z-40" id="sidebar">
+    <div class="p-4 flex justify-between items-center">
+      <h2 class="text-2xl font-bold flex items-center">
+        <i class="fa-solid fa-heart-pulse mr-2 heart-beat"></i> HeartCare
+      </h2>
+      <button id="closeSidebar" class="text-white hover:text-gray-200">
+        <i class="fa-solid fa-chevron-left text-xl sidebar-arrow transition-transform duration-300"></i>
+      </button>
+    </div>
+    <ul class="mt-6 space-y-2 px-4">
+      <li><a href="index.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-house mr-2"></i> Home</a></li>
+      <li><a href="checkins.html" class="sidebar-link flex items-center p-2 bg-white bg-opacity-20 rounded-lg"><i class="fa-solid fa-calendar-check mr-2"></i> Daily Check-ins</a></li>
+      <li><a href="prediction.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-heartbeat mr-2"></i> Prediction</a></li>
+      <li><a href="results.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-chart-line mr-2"></i> Results</a></li>
+      <li><a href="preventions.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-shield-heart mr-2"></i> Preventions</a></li>
+      <li><a href="chatbot.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-comment-medical mr-2"></i> Chatbot</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content lg:ml-64 p-4 transition-all duration-300" id="mainContent">
+    <!-- Header -->
+    <header class="bg-white text-red-600 p-4 flex justify-between items-center rounded-lg shadow-md sticky top-0 z-30">
+      <button id="toggleSidebar" class="text-2xl"><i class="fa-solid fa-bars"></i></button>
+      <h1 class="text-xl font-bold flex items-center"><i class="fa-solid fa-heart-pulse mr-2"></i> Daily Check-ins</h1>
+      <button id="userProfile" class="text-2xl"><i class="fa-solid fa-user-circle"></i></button>
+    </header>
+
+    <!-- User Info Dropdown -->
+    <div id="userInfoDropdown" class="hidden absolute top-16 right-4 bg-white text-gray-800 rounded-lg shadow-lg p-4 w-64 z-50">
+      <h3 class="text-lg font-bold mb-2">User Profile</h3>
+      <p id="userNameDisplay" class="text-sm mb-1">Username: N/A</p>
+      <p id="userEmailDisplay" class="text-sm mb-4">Email: N/A</p>
+      <button id="logoutButton" class="bg-red-600 text-white px-4 py-1 rounded-lg hover:bg-red-700 w-full">Logout</button>
+    </div>
+
+    <!-- Check-in Form -->
+    <section class="container mx-auto mt-6">
+      <div class="bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-3xl font-semibold text-red-600 mb-4 flex items-center">
+          <i class="fa-solid fa-calendar-check mr-2"></i> Log Your Daily Health Data
+        </h2>
+        <p class="text-gray-700 mb-6">Track your heart health metrics daily. Heart rate is fetched from your sensor.</p>
+        <form id="checkinForm" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="heartRate">Heart Rate (BPM)</label>
+              <div class="relative">
+                <input type="number" id="heartRate" class="w-full p-3 border rounded bg-gray-100 focus:border-red-600 pr-10" placeholder="Fetching..." readonly>
+                <span id="heartRateLoading" class="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  <i class="fa-solid fa-spinner fa-spin text-red-600"></i>
+                </span>
+              </div>
+              <p id="heartRateError" class="text-red-600 text-sm mt-1 hidden">Heart rate unavailable.</p>
+            </div>
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="bloodPressure">Blood Pressure (mmHg)</label>
+              <input type="text" id="bloodPressure" class="w-full p-3 border rounded focus:border-red-600" placeholder="e.g., 120/80" required>
+              <p id="bloodPressureError" class="text-red-600 text-sm mt-1 hidden">Enter valid format (e.g., 120/80).</p>
+            </div>
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="weight">Weight (kg)</label>
+              <input type="number" id="weight" class="w-full p-3 border rounded focus:border-red-600" placeholder="Enter weight" step="0.1" required>
+              <p id="weightError" class="text-red-600 text-sm mt-1 hidden">Weight must be a positive number.</p>
+            </div>
+            <div>
+              <label class="block text-gray-700 font-medium mb-2" for="activity">Physical Activity (minutes)</label>
+              <input type="number" id="activity" class="w-full p-3 border rounded focus:border-red-600" placeholder="Enter activity minutes" required>
+              <p id="activityError" class="text-red-600 text-sm mt-1 hidden">Activity must be non-negative.</p>
+            </div>
+          </div>
+          <button type="submit" id="checkinSubmit" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition w-full md:w-auto text-lg flex items-center justify-center">
+            <i class="fa-solid fa-check mr-2"></i> Submit Check-in
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Check-in History -->
+    <section class="container mx-auto mt-6">
+      <div class="bg-white p-8 rounded-lg shadow-md">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-semibold text-red-600 flex items-center">
+            <i class="fa-solid fa-history mr-2"></i> Recent Check-ins
+          </h3>
+          <button id="clearHistory" class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition flex items-center">
+            <i class="fa-solid fa-trash mr-2"></i> Clear All
+          </button>
+        </div>
+        <div class="overflow-x-auto">
+          <table id="historyTable" class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-red-100 text-red-600">
+                <th class="p-3">Date</th>
+                <th class="p-3">Heart Rate (BPM)</th>
+                <th class="p-3">Blood Pressure (mmHg)</th>
+                <th class="p-3">Weight (kg)</th>
+                <th class="p-3">Activity (min)</th>
+                <th class="p-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="historyList" class="bg-gray-50"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-red-600 text-white p-4 rounded-lg shadow-lg hidden transform transition-all duration-300">
+      <p id="toastMessage"></p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-red-600 text-white p-8 mt-12">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-xl font-bold mb-4">HeartCare</h3>
+          <p class="text-sm">Empowering you to live a heart-healthy life with AI-driven insights.</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-twitter text-2xl"></i></a>
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-facebook text-2xl"></i></a>
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-instagram text-2xl"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+          <div class="flex">
+            <input type="email" placeholder="Enter your email" class="p-2 rounded-l-lg flex-1 text-gray-800">
+            <button type="submit" class="bg-white text-red-600 p-2 rounded-r-lg hover:bg-gray-100">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <p class="text-center mt-6 text-sm">© 2025 HeartCare. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+  <script src="script.js"></script>
+  <script src="hardware-integration.js"></script>
+</body>
+</html>

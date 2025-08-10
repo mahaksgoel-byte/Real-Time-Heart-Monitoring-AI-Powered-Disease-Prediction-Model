@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preventions - HeartCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .carousel-container { position: relative; overflow: hidden; border: 2px solid #e53e3e; border-radius: 12px; background: #fff; padding: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .carousel { display: flex; transition: transform 0.5s ease; }
+    .carousel-slide { min-width: 100%; padding: 1rem; }
+    .carousel-dot { height: 12px; width: 12px; background-color: #bbb; border-radius: 50%; display: inline-block; margin: 0 5px; cursor: pointer; }
+    .carousel-dot.active { background-color: #e53e3e; }
+    .pharmacy-bar { background: linear-gradient(to right, #f56565, #e53e3e); }
+    .pharmacy-bar a { transition: transform 0.3s; }
+    .pharmacy-bar a:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Sidebar -->
+  <div class="sidebar fixed top-0 left-0 h-full w-64 bg-gradient-to-b from-red-600 to-red-400 text-white shadow-lg transform transition-transform duration-300 sidebar-hidden lg:sidebar-visible z-40" id="sidebar">
+    <div class="p-4 flex justify-between items-center">
+      <h2 class="text-2xl font-bold flex items-center">
+        <i class="fa-solid fa-heart-pulse mr-2 heart-beat"></i> HeartCare
+      </h2>
+      <button id="closeSidebar" class="text-white hover:text-gray-200">
+        <i class="fa-solid fa-chevron-left text-xl sidebar-arrow transition-transform duration-300"></i>
+      </button>
+    </div>
+    <ul class="mt-6 space-y-2 px-4">
+      <li><a href="index.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-house mr-2"></i> Home</a></li>
+      <li><a href="checkins.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-calendar-check mr-2"></i> Daily Check-ins</a></li>
+      <li><a href="prediction.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-heartbeat mr-2"></i> Prediction</a></li>
+      <li><a href="results.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-chart-line mr-2"></i> Results</a></li>
+      <li><a href="preventions.html" class="sidebar-link flex items-center p-2 bg-white bg-opacity-20 rounded-lg"><i class="fa-solid fa-shield-heart mr-2"></i> Preventions</a></li>
+      <li><a href="chatbot.html" class="sidebar-link flex items-center p-2 hover:bg-white hover:bg-opacity-20 rounded-lg"><i class="fa-solid fa-comment-medical mr-2"></i> Chatbot</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content lg:ml-64 p-4 transition-all duration-300" id="mainContent">
+    <!-- Header -->
+    <header class="bg-white text-red-600 p-4 flex justify-between items-center rounded-lg shadow-md sticky top-0 z-30">
+      <button id="toggleSidebar" class="text-2xl"><i class="fa-solid fa-bars"></i></button>
+      <h1 class="text-xl font-bold flex items-center"><i class="fa-solid fa-shield-heart mr-2"></i> Prevention Strategies</h1>
+      <button id="userProfile" class="text-2xl"><i class="fa-solid fa-user-circle"></i></button>
+    </header>
+
+    <!-- User Info Dropdown -->
+    <div id="userInfoDropdown" class="hidden absolute top-16 right-4 bg-white text-gray-800 rounded-lg shadow-lg p-4 w-64 z-50">
+      <p id="userNameDisplay" class="text-sm mb-1">Username: N/A</p>
+      <p id="userEmailDisplay" class="text-sm mb-4">Email: N/A</p>
+      <button id="logoutButton" class="bg-red-600 text-white px-4 py-1 rounded-lg hover:bg-red-700 w-full">Logout</button>
+    </div>
+
+    <!-- Prevention Plans Carousel -->
+    <section class="container mx-auto mt-6">
+      <div class="bg-white p-8 rounded-lg shadow-md fade-in">
+        <h2 class="text-3xl font-semibold text-red-600 mb-4 flex items-center">
+          <i class="fa-solid fa-shield-heart mr-2"></i> Personalized Prevention Plans
+        </h2>
+        <p class="text-gray-700 mb-6">Explore tailored prevention plans based on your cardiovascular risk level. ❤️</p>
+        <div class="carousel-container">
+          <div class="carousel flex">
+            <!-- Group 1: Low Risk (0–20%) -->
+            <div class="carousel-slide">
+              <h3 class="text-2xl font-semibold text-red-600 mb-4 flex items-center">
+                <i class="fa-solid fa-heart-circle-check mr-2"></i> 0–20% Low Risk 🌟
+              </h3>
+              <p class="text-gray-700 mb-4"><strong>Suitable for:</strong> BMI < 25, BP < 130/80, non-smokers, active lifestyle, normal cholesterol & glucose.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Precautions 🛡️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Maintain regular exercise (e.g., brisk walking 30 min/day). 🏃</li>
+                    <li>Eat a Mediterranean or DASH-style diet. 🥗</li>
+                    <li>Annual health screenings (BP, cholesterol, glucose). 🩺</li>
+                    <li>Avoid starting smoking or alcohol abuse. 🚭</li>
+                    <li>Maintain healthy weight and stress levels. 😊</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Risks if Ignored ⚠️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Slow buildup of atherosclerosis.</li>
+                    <li>Early rise in BP or LDL over years.</li>
+                    <li>Missed opportunity for early lifestyle correction.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Group 2: Mild Risk (21–40%) -->
+            <div class="carousel-slide">
+              <h3 class="text-2xl font-semibold text-red-600 mb-4 flex items-center">
+                <i class="fa-solid fa-heart-circle-plus mr-2"></i> 21–40% Mild Risk 🌱
+              </h3>
+              <p class="text-gray-700 mb-4"><strong>Suitable for:</strong> Slightly elevated BP (130–139/80–89), borderline cholesterol (LDL 130–159), overweight.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Precautions 🛡️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Moderate lifestyle changes (reduce sodium, increase fiber, BMI < 25). 🥕</li>
+                    <li>Cut down processed foods, fried items, and sugars. 🍔❌</li>
+                    <li>Regular physical activity + aerobic exercise (150 min/week). 🚴</li>
+                    <li>Manage screen time and sleep (≥7 hrs/day). 😴</li>
+                    <li>Track BP and lipids every 6–12 months. 📊</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Risks if Ignored ⚠️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Hypertension Stage 1, LDL elevation.</li>
+                    <li>Early vascular inflammation or endothelial dysfunction.</li>
+                    <li>Gradual transition to metabolic syndrome.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Group 3: Moderate Risk (41–60%) -->
+            <div class="carousel-slide">
+              <h3 class="text-2xl font-semibold text-red-600 mb-4 flex items-center">
+                <i class="fa-solid fa-heart-circle-exclamation mr-2"></i> 41–60% Moderate Risk ⚠️
+              </h3>
+              <p class="text-gray-700 mb-4"><strong>Suitable for:</strong> BP > 140/90, BMI > 28, glucose pre-diabetic, LDL > 160, sedentary lifestyle.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Precautions 🛡️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Cardiologist or physician consultation advised. 👩‍⚕️</li>
+                    <li>Possible medication (e.g., low-dose statins or ACE inhibitors). 💊</li>
+                    <li>Supervised exercise plan. 🏋️</li>
+                    <li>Intensive dietary intervention (low sodium, plant-based). 🥦</li>
+                    <li>Weight loss target: 5–10% of current weight. ⚖️</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Risks if Ignored ⚠️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>High risk of angina, TIA, or silent ischemia.</li>
+                    <li>Organ-level changes (e.g., left ventricular hypertrophy).</li>
+                    <li>Microvascular complications (kidney, retina).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Group 4: High Risk (61–80%) -->
+            <div class="carousel-slide">
+              <h3 class="text-2xl font-semibold text-red-600 mb-4 flex items-center">
+                <i class="fa-solid fa-heart-circle-minus mr-2"></i> 61–80% High Risk 🚨
+              </h3>
+              <p class="text-gray-700 mb-4"><strong>Suitable for:</strong> Multiple comorbidities (e.g., hypertension + diabetes), BMI > 32, poor activity, smoking history.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Precautions 🛡️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Intensive pharmacological treatment (statins, antihypertensives). 💉</li>
+                    <li>Cardiac workup (ECG, stress test, echocardiography). 🩺</li>
+                    <li>Tobacco/alcohol cessation programs. 🚬❌</li>
+                    <li>Tight glycemic and BP control. 📉</li>
+                    <li>Consider cardiac rehabilitation. 🏥</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Risks if Ignored ⚠️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Coronary artery disease, stroke, or cardiac ischemia.</li>
+                    <li>Heart failure or arrhythmias.</li>
+                    <li>Progressive kidney and vascular damage.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Group 5: Very High Risk (81–100%) -->
+            <div class="carousel-slide">
+              <h3 class="text-2xl font-semibold text-red-600 mb-4 flex items-center">
+                <i class="fa-solid fa-heart-crack mr-2"></i> 81–100% Very High Risk 🆘
+              </h3>
+              <p class="text-gray-700 mb-4"><strong>Suitable for:</strong> Age > 65 with hypertension, obesity (BMI > 35), high cholesterol & glucose, high resting HR, poor lifestyle.</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Precautions 🛡️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>Emergency medical evaluation and intervention. 🚑</li>
+                    <li>Invasive diagnostics (angiography, CT scan, etc.). 🩻</li>
+                    <li>Medications: statins, beta-blockers, anticoagulants. 💊</li>
+                    <li>Frequent monitoring: BP, ECG, lipids every 1–3 months. 📅</li>
+                    <li>Dietary consult + supervised rehab. 🥗🏋️</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold text-red-600 mb-2">Risks if Ignored ⚠️</h4>
+                  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                    <li>High risk of myocardial infarction, stroke.</li>
+                    <li>Multi-organ failure or systemic complications.</li>
+                    <li>Fatal arrhythmias or thrombotic events.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <button id="prevSlide" class="absolute left-2 top-1/2 transform -translate-y-0 bg-red-600 text-white p-2 rounded-full hover:bg-red-700">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button id="nextSlide" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-red-600 text-white p-2 rounded-full hover:bg-red-700">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <!-- Carousel Dots -->
+          <div class="text-center mt-4">
+            <span class="carousel-dot active" data-slide="0"></span>
+            <span class="carousel-dot" data-slide="1"></span>
+            <span class="carousel-dot" data-slide="2"></span>
+            <span class="carousel-dot" data-slide="3"></span>
+            <span class="carousel-dot" data-slide="4"></span>
+          </div>
+        </div>
+        <a href="chatbot.html" class="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition inline-flex items-center mt-6">
+          <i class="fa-solid fa-comment-medical mr-2"></i> Ask Our Chatbot for More Tips 🤖
+        </a>
+      </div>
+    </section>
+
+    <!-- Resources for Heart Health -->
+    <section class="container mx-auto mt-6">
+      <div class="bg-white p-8 rounded-lg shadow-md fade-in">
+        <h2 class="text-3xl font-semibold text-red-600 mb-4 flex items-center">
+          <i class="fa-solid fa-heart mr-2"></i> Resources for Heart Health 📚
+        </h2>
+        <p class="text-gray-700 mb-6">Explore these apps, websites, and organizations to support your heart health journey. ❤️</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- App: MyFitnessPal -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="assets/images/Screenshot 2025-06-10 at 10.16.40 PM.png" alt="MyFitnessPal" class="w-full h-32 object-cover">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-red-600">MyFitnessPal</h3>
+              <p class="text-gray-600 text-sm mb-2">Track nutrition and exercise to maintain a heart-healthy lifestyle. 🥗🏃</p>
+              <a href="https://www.myfitnesspal.com" target="_blank" class="text-red-600 hover:text-red-700 text-sm">Visit App <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+          </div>
+          <!-- Website: American Heart Association -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="assets/images/Screenshot 2025-06-10 at 10.22.10 PM.png" alt="American Heart Association" class="w-full h-32 object-cover">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-red-600">American Heart Association</h3>
+              <p class="text-gray-600 text-sm mb-2">Access resources and tips for heart disease prevention. 🩺</p>
+              <a href="https://www.heart.org" target="_blank" class="text-red-600 hover:text-red-700 text-sm">Visit Website <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+          </div>
+          <!-- Institution: CDC -->
+          <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img src="assets/images/Screenshot 2025-06-10 at 11.43.58 PM.png" alt="CDC" class="w-full h-32 object-cover">
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-red-600">Centers for Disease Control</h3>
+              <p class="text-gray-600 text-sm mb-2">Learn about heart disease risk factors and prevention strategies. 📊</p>
+              <a href="https://www.cdc.gov/heartdisease" target="_blank" class="text-red-600 hover:text-red-700 text-sm">Visit CDC <i class="fa-solid fa-arrow-right ml-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pharmacy Bar -->
+    <section class="container mx-auto mt-6">
+      <div class="pharmacy-bar flex rounded-lg shadow-md overflow-hidden">
+        <a href="https://www.amazon.in/s?k=heart+health+vitamins+coq10+magnesium" target="_blank" class="flex-1 flex items-center justify-center p-4 text-white hover:bg-red-700">
+          <i class="fa-solid fa-shopping-cart text-2xl mr-2"></i> Shop Heart Health Supplements on Amazon
+        </a>
+        <a href="https://pharmeasy.in/online-medicine-order" target="_blank" class="flex-1 flex items-center justify-center p-4 text-white hover:bg-red-700">
+          <i class="fa-solid fa-prescription-bottle text-2xl mr-2"></i> Shop Medicines on PharmEasy
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-red-600 text-white p-8 mt-12">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <h3 class="text-xl font-bold mb-4">HeartCare</h3>
+          <p class="text-sm">Empowering you to live a heart-healthy life with AI-driven insights. ❤️</p>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-twitter text-2xl"></i></a>
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-facebook text-2xl"></i></a>
+            <a href="#" class="text-white hover:text-gray-200"><i class="fa-brands fa-instagram text-2xl"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+          <div class="flex">
+            <input type="email" id="newsletterEmail" placeholder="Enter your email" class="p-2 rounded-l-lg flex-1 text-gray-800">
+            <button id="newsletterSubmit" type="submit" class="bg-white text-red-600 p-2 rounded-r-lg hover:bg-gray-100">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <p class="text-center mt-6 text-sm">© 2025 HeartCare. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Carousel navigation
+    const carousel = document.querySelector('.carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevSlide = document.querySelector('#prevSlide');
+    const nextSlide = document.querySelector('#nextSlide');
+    let currentSlide = 0;
+
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach(dot => {
+        dot.classList.toggle('active', parseInt(dot.dataset.slide) === currentSlide);
+      });
+    }
+
+    prevSlide.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+
+    nextSlide.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      updateCarousel();
+    });
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        currentSlide = parseInt(dot.dataset.slide);
+        updateCarousel();
+      });
+    });
+  </script>
+</body>
+</html>

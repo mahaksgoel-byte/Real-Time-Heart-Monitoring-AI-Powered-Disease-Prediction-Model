@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - HeartCare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen relative overflow-hidden">
+  <!-- Background Video -->
+  <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover z-0 opacity-50" id="videoBg">
+    <source src="assets/videos/heart-bg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <!-- Background Audio -->
+  <audio id="backgroundAudio" loop>
+    <source src="assets/audio/heartbeat.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+  <!-- Overlay for better contrast -->
+  <div class="absolute inset-0 bg-black opacity-30 z-10"></div>
+  <!-- Sound Toggle Button -->
+  <button id="toggleSound" class="absolute top-4 right-4 z-20 bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition">
+    <i class="fa-solid fa-volume-mute"></i>
+  </button>
+  <!-- Signup Form -->
+  <div class="relative bg-white bg-opacity-90 p-10 rounded-xl shadow-2xl w-full max-w-lg z-20">
+    <h2 class="text-4xl font-bold text-red-600 mb-8 flex items-center justify-center">
+      <i class="fa-solid fa-heart-pulse mr-3 heart-beat text-3xl"></i> Sign Up for HeartCare
+    </h2>
+    <form id="signupForm" class="space-y-6">
+      <div>
+        <label class="block text-gray-700 font-medium mb-2" for="username">Username</label>
+        <input type="text" id="username" class="w-full p-3 border rounded-lg focus:border-red-600 focus:ring-2 focus:ring-red-200 transition" placeholder="Enter username (min 3 characters)" required>
+        <p id="usernameError" class="text-red-600 text-sm mt-1 hidden"></p>
+      </div>
+      <div>
+        <label class="block text-gray-700 font-medium mb-2" for="email">Email</label>
+        <input type="email" id="email" class="w-full p-3 border rounded-lg focus:border-red-600 focus:ring-2 focus:ring-red-200 transition" placeholder="Enter your email" required>
+        <p id="emailError" class="text-red-600 text-sm mt-1 hidden"></p>
+      </div>
+      <div>
+        <label class="block text-gray-700 font-medium mb-2" for="password">Password</label>
+        <input type="password" id="password" class="w-full p-3 border rounded-lg focus:border-red-600 focus:ring-2 focus:ring-red-200 transition" placeholder="Enter password (min 8 characters)" required>
+        <p id="passwordError" class="text-red-600 text-sm mt-1 hidden"></p>
+      </div>
+      <div>
+        <label class="block text-gray-700 font-medium mb-2" for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" class="w-full p-3 border rounded-lg focus:border-red-600 focus:ring-2 focus:ring-red-200 transition" placeholder="Confirm your password" required>
+        <p id="confirmPasswordError" class="text-red-600 text-sm mt-1 hidden"></p>
+      </div>
+      <button type="submit" id="signupButton" class="bg-red-600 text-white px-6 py-3 rounded-lg w-full hover:bg-red-700 transition flex items-center justify-center text-lg">
+        <span id="signupText">Sign Up</span>
+        <i class="fa-solid fa-user-plus ml-2"></i>
+        <i id="signupSpinner" class="fa-solid fa-spinner fa-spin ml-2 hidden"></i>
+      </button>
+    </form>
+    <p class="mt-6 text-center text-gray-700">Already have an account? <a href="login.html" class="text-red-600 hover:underline font-medium">Log In</a></p>
+  </div>
+  <footer class="absolute bottom-4 text-center text-gray-300 z-20 w-full">
+    <p>© 2025 HeartCare. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

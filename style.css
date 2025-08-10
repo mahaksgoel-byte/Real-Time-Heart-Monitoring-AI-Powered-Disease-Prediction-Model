@@ -1,0 +1,130 @@
+/* Heartbeat Animation */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.heart-beat {
+  animation: heartbeat 1s infinite;
+}
+
+/* Sidebar */
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+.sidebar-visible {
+  transform: translateX(0);
+}
+
+.sidebar-link {
+  transition: background-color 0.3s ease-in-out;
+}
+
+#closeSidebar {
+  display: block;
+}
+
+/* Heart Pulse Background */
+.heart-pulse-bg {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.5); opacity: 0.1; }
+  100% { transform: scale(1); opacity: 0.3; }
+}
+
+/* Tilt Card */
+.tilt-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Carousel */
+#newsCarousel {
+  transition: transform 0.5s ease-in-out;
+}
+
+/*Progress Bar*/
+#progressBar {
+  height: 8px;
+  background-color: #4caf50;
+  transition: width 0.3s ease-in-out;
+}
+#progressPercentage {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Table Styles */
+#historyTable th, #historyTable td {
+  border: 1px solid #e5e7eb;
+}
+
+#historyTable tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.delete-checkin {
+  transition: color 0.3s ease-in-out;
+}
+
+/* Toast Notification */
+#toast {
+  transform: translateY(100%);
+}
+
+#toast:not(.hidden) {
+  transform: translateY(0);
+}
+
+/* Tooltip */
+[title] {
+  position: relative;
+}
+
+[title]:hover:after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 50;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 1024px) {
+  .sidebar-hidden {
+    transform: none;
+  }
+  #closeSidebar {
+    display: none;
+  }
+  #toggleSidebar {
+    display: none;
+  }
+}
+
+/* User Profile Dropdown */
+#userInfoDropdown {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Additional Styles */
+input:focus, select:focus, button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
