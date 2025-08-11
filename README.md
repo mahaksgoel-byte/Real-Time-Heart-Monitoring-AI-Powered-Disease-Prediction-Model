@@ -1,6 +1,7 @@
 ❤️ Heart Disease Prediction & Monitoring Web Application
 
 📌 Overview
+
 This is an integrated web application for real-time heart health monitoring and heart disease risk prediction.
 The platform combines live heartbeat sensing from connected hardware with AI-powered disease prediction, health guidance, preventive tips, and chatbot assistance — all in one easy-to-use interface.
 
@@ -103,12 +104,17 @@ Open index.html or other pages via a local server.
 - UI Responsiveness – Real-time data rendering affected page performance; optimized DOM updates to only refresh on change.
 
 📸 Screenshots
-(Add screenshots of dashboard, live heartbeat graph, prediction form, chatbot, etc.)
+
+<img src="images/1.png" width="300" />
+<img src="images/2.png" width="300" />
+<img src="images/3.png" width="300" />
+<img src="images/4.png" width="300" />
+<img src="images/5.png" width="300" />
 
 💡 Future Improvements
-Mobile-friendly responsive design.
-Cloud-based heartbeat data storage for long-term tracking.
-Improved AI chatbot with more medical datasets.
+- Mobile-friendly responsive design.
+- Cloud-based heartbeat data storage for long-term tracking.
+- Improved AI chatbot with more medical datasets.
 
 📜 License
 This project is licensed under the Apache License.
